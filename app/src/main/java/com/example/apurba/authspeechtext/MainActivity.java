@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -60,6 +63,29 @@ public class MainActivity extends AppCompatActivity implements
         startActivityForResult(intent, REQ_CODE_GOOGLE_SIGNIN);
     }
 
+    /*
+     * This method is called when Google Sign-in comes back to my activity.
+     * We grab the sign-in results and display the user's name and email address.
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == REQ_CODE_GOOGLE_SIGNIN) {
+            TextView outPutTextView = findViewById(R.id.tv_Output);
+            // google sign-in has returned
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(intent);
+            if (result.isSuccess()) {
+                // yay; user logged in successfully
+                GoogleSignInAccount acct = result.getSignInAccount();
+
+                outPutTextView.setText("You signed in as: " + acct.getDisplayName() + " "
+                        + acct.getEmail());
+            } else {
+                outPutTextView.setText("Login fail. :(");
+            }
+        }
+    }
 
 
 
