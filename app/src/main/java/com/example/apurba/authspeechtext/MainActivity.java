@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements
                 // yay; user logged in successfully
                 GoogleSignInAccount acct = result.getSignInAccount();
                 tvResult.setText("You signed in: " + acct.getEmail());
+                tts.stop();
+                Intent tsaIntent = new Intent(this, TextSpeechActivity.class);
+                tsaIntent.putExtra("email", acct.getEmail());
+                startActivity(tsaIntent);
             } else {
                 tvResult.setText("Log in failed :(");
             }
