@@ -87,17 +87,15 @@ public class MainActivity extends AppCompatActivity implements
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == REQ_CODE_GOOGLE_SIGNIN) {
-            TextView outPutTextView = findViewById(R.id.tv_Output);
+            TextView tvResult = findViewById(R.id.tv_result);
             // google sign-in has returned
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(intent);
             if (result.isSuccess()) {
                 // yay; user logged in successfully
                 GoogleSignInAccount acct = result.getSignInAccount();
-
-                outPutTextView.setText("You signed in as: " + acct.getDisplayName() + " "
-                        + acct.getEmail());
+                tvResult.setText("You signed in: " + acct.getEmail());
             } else {
-                outPutTextView.setText("Login fail. :(");
+                tvResult.setText("Log in failed :(");
             }
         }
     }
