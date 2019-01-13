@@ -6,13 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".TextSpeechActivity">
 
+    <LinearLayout
+        android:id="@+id/ll_tts_input_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
+        <EditText
+            android:layout_margin="16dp"
+            android:id="@+id/et_tts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="type anything here" />
+        <Button
+            android:id="@+id/bt_tts_play"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Spell" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_login_message"
-        android:layout_margin="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
         android:text="Hello World!"/>
 
 </RelativeLayout>
