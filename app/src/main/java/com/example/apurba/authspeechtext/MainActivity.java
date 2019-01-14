@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity implements
                 .addApi(Auth.GOOGLE_SIGN_IN_API, options)
                 .addConnectionCallbacks(this)
                 .build();
+
+        Button btPhoto = findViewById(R.id.bt_photo);
+        btPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoActIntent = new Intent(MainActivity.this, PhotoActivity.class);
+                startActivity(photoActIntent);
+            }
+        });
     }
 
 
